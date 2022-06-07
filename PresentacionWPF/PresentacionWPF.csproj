@@ -1,0 +1,86 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\anyadirAlumno.png" />
+    <None Remove="Images\asignaturas.png" />
+    <None Remove="Images\birrete.png" />
+    <None Remove="Images\camera.jpg" />
+    <None Remove="Images\cancel_redondo.png" />
+    <None Remove="Images\close.png" />
+    <None Remove="Images\close2.png" />
+    <None Remove="Images\deleteAlumno.png" />
+    <None Remove="Images\editAlumno.png" />
+    <None Remove="Images\email_gray.png" />
+    <None Remove="Images\expand.png" />
+    <None Remove="Images\home.png" />
+    <None Remove="Images\home_back.png" />
+    <None Remove="Images\icon_close.png" />
+    <None Remove="Images\informes.png" />
+    <None Remove="Images\matriculas.png" />
+    <None Remove="Images\notification_bell.png" />
+    <None Remove="Images\ok.png" />
+    <None Remove="Images\padlock.png" />
+    <None Remove="Images\print.png" />
+    <None Remove="Images\search.png" />
+    <None Remove="Images\search_white.png" />
+    <None Remove="Images\toogleButton.png" />
+    <None Remove="Images\x-mark.png" />
+    <None Remove="Resources\camera.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj" />
+		<ProjectReference Include="..\Entidades\Entidades.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Resource Include="Images\anyadirAlumno.png" />
+	  <Resource Include="Images\asignaturas.png" />
+	  <Resource Include="Images\birrete.png" />
+	  <Resource Include="Images\camera.jpg" />
+	  <Resource Include="Images\cancel_redondo.png" />
+	  <Resource Include="Images\close.png" />
+	  <Resource Include="Images\close2.png" />
+	  <Resource Include="Images\deleteAlumno.png" />
+	  <Resource Include="Images\editAlumno.png" />
+	  <Resource Include="Images\email_gray.png" />
+	  <Resource Include="Images\expand.png" />
+	  <Resource Include="Images\home.png" />
+	  <Resource Include="Images\home_back.png" />
+	  <Resource Include="Images\icon_close.png" />
+	  <Resource Include="Images\informes.png" />
+	  <Resource Include="Images\matriculas.png" />
+	  <Resource Include="Images\notification_bell.png" />
+	  <Resource Include="Images\ok.png" />
+	  <Resource Include="Images\padlock.png" />
+	  <Resource Include="Images\print.png" />
+	  <Resource Include="Images\search.png" />
+	  <Resource Include="Images\search_white.png" />
+	  <Resource Include="Images\toogleButton.png" />
+	  <Resource Include="Images\x-mark.png" />
+	  <Resource Include="Resources\camera.jpg" />
+	</ItemGroup>
+</Project>

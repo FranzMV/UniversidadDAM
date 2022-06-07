@@ -1,0 +1,20 @@
+﻿<Application x:Class="PresentacionWPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PresentacionWPF"
+             StartupUri="Login.xaml">
+    <Application.Resources>
+        
+        <!--Fuente Window-->
+        <Style x:Key="fuenteCenturyGothic" TargetType="{x:Type Window}">
+            <Setter Property="FontFamily" Value="Century Gothic"/>
+        </Style>
+
+        <!--Fuente UserControl-->
+        <Style x:Key="fuenteCenturyGothicUserControl" TargetType="{x:Type UserControl}">
+            <Setter Property="FontFamily" Value="Century Gothic"/>
+        </Style>
+
+      
+    </Application.Resources>
+</Application>

@@ -1,0 +1,56 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--TextBlock Email Login-->
+    <Style x:Key="TextHint" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="Grid.Column" Value="1"/>
+        <Setter Property="Panel.ZIndex" Value="1"/>
+        <Setter Property="Margin" Value="10 0 0 0"/>
+        <Setter Property="Foreground" Value="#acb0af"/>
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+    <!--TextBox Email Login-->
+    <Style x:Key="textBox" TargetType="Control">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Grid.Column" Value="1"/>
+        <Setter Property="Margin" Value="10 0 0 0"/>
+        <Setter Property="Foreground" Value="#878787"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <!--Login Button-->
+    <Style x:Key="loginbutton" TargetType="Button">
+        <Setter Property="Content" Value="Login"/>
+        <Setter Property="Width" Value="350"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Margin" Value="0 60 0 0"/>
+        <Setter Property="Background" Value="PaleVioletRed"/>
+        <Setter Property="Foreground" Value="WhiteSmoke"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Template" >
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="5" BorderThickness="1" BorderBrush="WhiteSmoke" Padding="15">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="DodgerBlue"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+
+            <Trigger Property="IsMouseCaptured" Value="True">
+                <Setter Property="Background" Value="DodgerBlue"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>
+    

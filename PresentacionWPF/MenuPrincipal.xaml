@@ -1,0 +1,292 @@
+﻿<Window x:Class="PresentacionWPF.MenuPrincipal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PresentacionWPF"
+        mc:Ignorable="d"
+        Title="" Height="600" Width="1100" Style="{StaticResource fuenteCenturyGothic}" 
+            ResizeMode="NoResize"  
+            WindowStartupLocation="CenterScreen" 
+            WindowStyle="None" AllowsTransparency="True"  
+            MouseDown="Window_MouseDown">
+    
+    <!--Recursos-->
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/MenuPrincipalTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <!--CABECERA-->
+        <Grid x:Name="BarraSuperior" 
+              HorizontalAlignment="Left" 
+              Height="60" 
+              Background="#3b4252" 
+              VerticalAlignment="Top" 
+              Width="1100">
+
+            <!--Boton Cerrar-->
+            <Button x:Name="CloseWindow" 
+                    Style="{StaticResource CloseButton}"  
+                    Click="CloseWindow_Click" 
+                    ToolTip="Cerrar aplicación" >
+                <Image Source="Images/close2.png" 
+                       Height="27" 
+                       Width="24" 
+                       RenderTransformOrigin="0.562,0.593"/>
+            </Button>
+
+            <!--Toggele Button-->
+            <ToggleButton x:Name="tog_bn"
+                                    Background="Transparent"
+                                    Grid.Column="0"
+                                    Click="tog_bn_Click"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    BorderThickness="0" Height="30" Width="45"
+                                    Margin="2 0 0 0">
+
+                <Image Source="images/toogleButton.png" Height="30" Width="20"/>
+                <!--Animacion del menu lateral al hacer click sobre el toggle-->
+                <ToggleButton.Triggers>
+                    <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                        <BeginStoryboard>
+                            <Storyboard x:Name="HideStackPanel">
+                                <DoubleAnimation
+                                            Storyboard.TargetName="MenuLateral"
+                                            Storyboard.TargetProperty="Width"
+                                            BeginTime="0:0:0"
+                                            From="165" To="55"
+                                            Duration="0:0:0.3">
+
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                            Storyboard.TargetName="PanelCentral"
+                                            Storyboard.TargetProperty="Width"
+                                            BeginTime="0:0:0"
+                                            From="800" To="1035"
+                                            Duration="0:0:0.3">
+
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+
+                    <EventTrigger RoutedEvent="ToggleButton.Checked">
+                        <BeginStoryboard>
+                            <Storyboard x:Name="ShowStackPanel">
+                                <DoubleAnimation
+                                            Storyboard.TargetName="MenuLateral"
+                                            Storyboard.TargetProperty="Width"
+                                            BeginTime="0:0:0"
+                                            From="55" To="165"
+                                            Duration="0:0:0.3">
+
+                                </DoubleAnimation>
+                                <DoubleAnimation
+                                            Storyboard.TargetName="PanelCentral"
+                                            Storyboard.TargetProperty="Width"
+                                            BeginTime="0:0:0"
+                                            From="1035" To="800"
+                                            Duration="0:0:0.3">
+
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </ToggleButton.Triggers>
+            </ToggleButton>
+        </Grid>
+
+        <!--Label Usuario Conectado-->
+        <Label  x:Name="LblUsuario" 
+                Content="Hola, usuario" 
+                Margin="806,17,117,0" 
+                VerticalAlignment="Top" 
+                Style="{StaticResource lblMenuPrincipal}"/>
+
+        <!-- Separador Vertical-->
+        <Rectangle HorizontalAlignment="Left" 
+                   Height="2" 
+                   Margin="776,27,0,0" 
+                   Stroke="White" 
+                   VerticalAlignment="Top" 
+                   Width="39" 
+                   RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90.811"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+
+        <!-- Campana notificacion-->
+        <Image Source="Images/notification_bell.png" 
+               Width="15" 
+               VerticalAlignment="Top" 
+               Margin="415 20 0 0"/>
+
+        <!-- MENU LATERAL-->
+        <Grid x:Name="MenuLateral"  
+              HorizontalAlignment="Left" 
+              Width="60" 
+              Background="#3b4252"  
+              Margin="0 65 0 0" 
+              FlowDirection="LeftToRight">
+            <StackPanel Orientation="Vertical">
+
+                <!--Botón añadir alumno-->
+                <Button x:Name="BtnAnyadirAlumno" 
+                        Style="{StaticResource BotonesMenuLateral}"  
+                        Margin="0 50 0 0" 
+                        Click="InsertarAlumno" >
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/anyadirAlumno.png" 
+                               Height="25" Margin="10 5 0 0" 
+                               VerticalAlignment="Center" 
+                               ToolTip="Insertar nuevo alumno"/>
+                        <TextBlock Text="Añadir Alumno" 
+                                   Margin="15 5 0 0" 
+                                   FontSize="12" 
+                                   Foreground="White" 
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
+                <!--Botón Editar alumno-->
+                <Button x:Name="BtnEditarAlumno"
+                        Style="{StaticResource BotonesMenuLateral}" 
+                        Margin="0 8 0 0" 
+                        Click="EditarAlumno">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/editAlumno.png" 
+                               Height="25" 
+                               Margin="5 5 0 0" 
+                               VerticalAlignment="Center" 
+                               ToolTip="Editar alumno"/>
+                        <TextBlock Text="Editar Alumno" 
+                                   Margin="15 5 0 0" 
+                                   FontSize="12" 
+                                   Foreground="White" 
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
+                <!--Botón Eliminar alumno-->
+                <Button x:Name="BtnEliminarAlumno" 
+                        Style="{StaticResource BotonesMenuLateral}"  
+                        Margin="0 8 0 0" Click="EliminarAlumno">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/deleteAlumno.png" 
+                               Height="25" 
+                               Margin="15 5 0 0" 
+                               VerticalAlignment="Center" 
+                               ToolTip="Eliminar alumno"/>
+                        <TextBlock Text="Eliminar Alumno" 
+                                   Margin="15 5 0 0" 
+                                   FontSize="12" 
+                                   Foreground="White" 
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
+                <!--Botón Asignaturas-->
+                <Button x:Name="BtnAsignaturas"
+                        Style="{StaticResource BotonesMenuLateral}" 
+                        Margin="0 8 0 0" 
+                        Click="Asignaturas">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/asignaturas.png" 
+                               Height="25" 
+                               Margin="0 5 15 0" 
+                               VerticalAlignment="Center" 
+                               HorizontalAlignment="Left" 
+                               ToolTip="Asignaturas"/>
+                        <TextBlock Text="Asignaturas" 
+                                   Margin="0 5 12 0" 
+                                   FontSize="12" 
+                                   Foreground="White" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </Button>
+
+                <!--Botón Matrículas-->
+                <Button x:Name="BtnMatriculas"
+                        Style="{StaticResource BotonesMenuLateral}" 
+                        Margin="0 8 0 0" 
+                        Click="Matricula">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/matriculas.png" 
+                               Height="25" 
+                               Margin="0 5 17 0" 
+                               VerticalAlignment="Center" 
+                               HorizontalAlignment="Left" 
+                               ToolTip="Matrículas"/>
+                        <TextBlock Text="Matriculas" 
+                                   Margin="0 5 18 0" 
+                                   FontSize="12" 
+                                   Foreground="White" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </Button>
+
+                <!--Botón Informes-->
+                <Button x:Name="BtnInformes" 
+                        Style="{StaticResource BotonesMenuLateral}" 
+                        Margin="0 8 0 0" 
+                        Click="Informes">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/informes.png" 
+                               Height="25" 
+                               Margin="0 5 15 0"
+                               VerticalAlignment="Center" 
+                               HorizontalAlignment="Left" 
+                               ToolTip="Realizar informe"/>
+                        <TextBlock Text="Informes" 
+                                   Margin="0 5 30 0" 
+                                   FontSize="12" 
+                                   Foreground="White" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </Button>
+
+                <!--Botón Volver Menu Principla-->
+                <Button x:Name="BtnHome"  
+                        Style="{StaticResource BotonesMenuLateral}" 
+                        Margin="0 8 0 0" 
+                        Click="VolverMenuPrincipal">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/home_back.png" 
+                               Height="25" 
+                               Margin="21 5 15 0" 
+                               VerticalAlignment="Center" 
+                               HorizontalAlignment="Left" 
+                               ToolTip="Volver al menú principal"/>
+                        <TextBlock Text="Menú principal" 
+                                   Margin="0 5 30 0" 
+                                   FontSize="12" 
+                                   Foreground="White" 
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Left"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <!--Panel Central-->
+        <Grid x:Name="PanelCentral" 
+              Background="Transparent" 
+              Margin="60,60,0,0" 
+              Height="530"/>
+    </Grid>
+</Window>

@@ -1,0 +1,55 @@
+﻿<Window x:Class="PresentacionWPF.Buscador"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PresentacionWPF"
+             mc:Ignorable="d" 
+             Background="White" Width="1040" Height="500" Style="{StaticResource fuenteCenturyGothic}">
+    
+    <Grid x:Name="Principal">
+        <Grid  HorizontalAlignment="Center" VerticalAlignment="Top" Width="1040" Height="242" Background="White" x:Name="PanelPrincipalBusqueda">
+            <!--Label Cabecera
+            <Label x:Name="lblCabeceraBusqueda" Content="Búsqueda de alumnos" FontSize="13" Width="190" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,0,0,0"/>
+            -->
+            <Grid Background="#ECEFF4" Margin="10,10,10,-239" x:Name="PanelSecundarioBusqueda">
+                <WrapPanel Orientation="Horizontal" Margin="0,0,0,431">
+                    <!--Label Filtro-->
+                    <Label x:Name="lblFiltro" Content="Seleccionar filtro: " HorizontalAlignment="Left" Margin="28,5,0,0" VerticalAlignment="Top"  />
+
+                    <!--ComboBox para seleccionar el filtrado-->
+                    <ComboBox x:Name="comboBoxFiltrar" HorizontalAlignment="Left" Margin="10,8,0,0"   
+                          VerticalAlignment="Top" Width="138" Height="22"  Text="Select Option"/>
+
+                    <!--TextBlock para realizar la busqueda-->
+                    <Border BorderBrush="WhiteSmoke" BorderThickness="1" HorizontalAlignment="Right"  VerticalAlignment="Top" Margin="40,8,100,0" Width="340" Height="22" Background="White">
+                        <StackPanel Margin="3,3,9,3" Orientation="Horizontal">
+                            <Image Source="Images/search.png"  Height="16"/>
+                            <TextBox  x:Name="TxtBuscarAlumno" Width="308" BorderBrush="Transparent" BorderThickness="0" TextChanged="TxtBuscarAlumno_TextChanged" />
+                        </StackPanel>
+                    </Border>
+                </WrapPanel>
+                <!--ListView Alumnos -->
+                <ListView x:Name="ListaAlumnos" Margin="28,40,16,26" ItemsSource="{Binding}"  IsSynchronizedWithCurrentItem="True" MouseDoubleClick="ListaAlumnos_MouseDoubleClick">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="NIF" Width="90" DisplayMemberBinding="{Binding Path=Nif}"/>
+                            <GridViewColumn Header="Nombre" Width="90" DisplayMemberBinding="{Binding  Path=Nombre}"/>
+                            <GridViewColumn Header="1erApellido" Width="100" DisplayMemberBinding="{Binding   Path=Apellido1}"/>
+                            <GridViewColumn Header="2ºApellido" Width="100" DisplayMemberBinding="{Binding  Path=Apellido2}"/>
+                            <GridViewColumn Header="Ciudad" Width="90" DisplayMemberBinding="{Binding  Path=Ciudad}"/>
+                            <GridViewColumn Header="Dirección" Width="160" DisplayMemberBinding="{Binding  Path=Direccion}"/>
+                            <GridViewColumn Header="Teléfono" Width="100" DisplayMemberBinding="{Binding  Path=Telefono}"/>
+                            <GridViewColumn Header="Fecha Nacimiento" Width="150" DisplayMemberBinding="{Binding  Path=Fecha_Nacimiento}"/>
+                            <GridViewColumn Header="Sexo" Width="40" DisplayMemberBinding="{Binding  Path=Sexo}"/>
+                            <GridViewColumn Header="RutaFoto" Width="100" DisplayMemberBinding="{Binding  Path=Ruta_Foto}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <WrapPanel x:Name="PanelAvisoEliminar">
+                    <Label x:Name="lblEliminarInfo" Content="Doble click para seleccionar un alumno" Margin="770,445,0,0" Width="250" FontStyle="Italic" />
+                </WrapPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
